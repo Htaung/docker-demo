@@ -12,7 +12,8 @@ node {
      }
    }
    stage('docker build/push') {
-     docker.withRegistry('https://index.docker.io/v2/', 'dockerhub') {
+      //https://index.docker.io/v2/ v2 failed to authenicate
+     docker.withRegistry('https://docker.io', 'dockerhub') {
        //def app = docker.build("aungtrt1018/docker-nodejs-demo:${commit_id}", '.').push()
         def app = docker.build("aungtrt1018/docker-nodejs-demo:${commit_id}", '.')
         app.push()
